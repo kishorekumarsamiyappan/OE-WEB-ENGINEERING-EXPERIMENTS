@@ -1,38 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>My Biodata</title>
     <style>
         body {
-            background-color: #f0f8ff; /* light blue background */
+            background-color: #f0f8ff;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: #1a237e;
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        .navbar a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            background-color: #3949ab;
+        }
+
+        /* Dropdown Menu Container */
+        .dropdown {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            display: inline-block;
+        }
+
+        .dropdown input[type="checkbox"] {
+            display: none;
+        }
+
+        .dropdown label {
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1a237e;
+            min-width: 160px;
+            top: 30px;
+            right: 0;
+            border-radius: 5px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #3949ab;
+        }
+
+        .dropdown input[type="checkbox"]:checked ~ .dropdown-content {
+            display: block;
+        }
+
+        /* Content Box */
+        .box {
+            border: 2px solid #2196f3;
+            background-color: #ffffff;
             padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            border-radius: 10px;
         }
 
         h1 {
             text-align: center;
             color: #2c3e50;
             border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
         }
 
         h2 {
             color: #1a237e;
             border-left: 4px solid #1a237e;
             padding-left: 10px;
+            margin-top: 30px;
         }
 
         p, li {
             color: #333;
             font-size: 16px;
-        }
-
-        .box {
-            border: 2px solid #2196f3;
-            background-color: #ffffff;
-            padding: 20px;
-            margin: auto;
-            width: 80%;
-            border-radius: 10px;
         }
 
         img {
@@ -47,19 +116,36 @@
         .footer {
             text-align: center;
             font-size: 14px;
-            margin-top: 40px;
+            margin: 40px 0 20px;
             color: #555;
         }
     </style>
 </head>
 <body>
 
+    <!-- Navigation Bar with Three-dot Dropdown -->
+    <div class="navbar">
+        <a href="#personal">Personal</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown">
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle">&#8942;</label> <!-- Unicode for vertical three-dots -->
+            <div class="dropdown-content">
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <a href="#declaration">Declaration</a>
+            </div>
+        </div>
+    </div>
+
     <div class="box">
         <h1>My Biodata</h1>
-
         <img src="profile.jpg" alt="Profile Photo">
 
-        <h2>Personal Details</h2>
+        <h2 id="personal">Personal Details</h2>
         <p><b>Name:</b> Kishorekumar S</p>
         <p><b>Date of Birth:</b> 1st May 2006</p>
         <p><b>Gender:</b> Male</p>
@@ -67,14 +153,14 @@
         <p><b>Languages Known:</b> Tamil, English</p>
         <p><b>Marital Status:</b> Single</p>
 
-        <h2>Educational Qualification</h2>
+        <h2 id="education">Educational Qualification</h2>
         <ul>
             <li><b>B.E. ECE</b> - Kongu Engineering College (Pursuing)</li>
             <li><b>HSC</b> - Cambridge Higher Secondary School</li>
             <li><b>SSLC</b> - Cambridge Matric School</li>
         </ul>
 
-        <h2>Technical Skills</h2>
+        <h2 id="skills">Technical Skills</h2>
         <ul>
             <li>Embedded Systems (8051, PIC, ESP32)</li>
             <li>Python, C Programming</li>
@@ -82,7 +168,7 @@
             <li>MATLAB (Signal Processing)</li>
         </ul>
 
-        <h2>Projects</h2>
+        <h2 id="projects">Projects</h2>
         <ul>
             <li>Temperature Controlled Fan using 8051</li>
             <li>IoT Dashboard using Flask and SQLite</li>
@@ -96,12 +182,12 @@
             <li>Team player</li>
         </ul>
 
-        <h2>Contact Details</h2>
+        <h2 id="contact">Contact Details</h2>
         <p><b>Email:</b> kishorekumarsamiyappan@gmail.com</p>
         <p><b>Phone:</b> +91-6374864213</p>
         <p><b>Address:</b> 1/182, Konakattuthottam, Kasilingampalayam, Pappankulam (Po), Avinashi (Tk), Tiruppur (Dt), Pincode - 641655</p>
 
-        <h2>Declaration</h2>
+        <h2 id="declaration">Declaration</h2>
         <p>I hereby declare that all the information provided above is true to the best of my knowledge and belief.</p>
 
         <div class="footer">
