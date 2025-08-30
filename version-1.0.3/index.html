@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="Logo.png">
+  <title>Kishorekumar S - Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { 
+      background: linear-gradient(120deg,#0f2027,#203a43,#2c5364); 
+      color: #e2e8f0; 
+      line-height: 1.7; 
+    }
+    a { text-decoration: none; }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(15,23,42,0.85);
+      backdrop-filter: blur(10px);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      position: sticky; top: 0; z-index: 10;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .navbar a { color: #e2e8f0; margin-left: 20px; font-weight: 600; transition: 0.3s; }
+    .navbar a:hover { color: #38bdf8; }
+
+    /* Hero */
+    .hero {
+      text-align: center; padding: 90px 20px;
+      background: linear-gradient(135deg,#1e3a8a,#0ea5e9); color: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .hero img {
+      width: 170px; height: 170px; border-radius: 50%;
+      border: 5px solid white; margin-bottom: 20px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.4);
+    }
+    .hero h1 { font-size: 3.2rem; font-weight: 700; }
+    .hero p { margin: 15px 0; font-size: 1.3rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+    .btn {
+      display: inline-block; margin-top: 20px; padding: 12px 28px;
+      background: #38bdf8; color: #0f172a; border-radius: 30px; font-weight: 600;
+      transition: 0.3s; box-shadow: 0 4px 12px rgba(56,189,248,0.4);
+    }
+    .btn:hover { background: #0ea5e9; color: white; }
+
+    /* Sections */
+    section { padding: 70px 12%; }
+    h2 { color: #38bdf8; border-left: 5px solid #38bdf8; padding-left: 12px; margin-bottom: 35px; font-size: 1.9rem; }
+
+    /* About */
+    #about p { font-size: 1.1rem; line-height: 1.9; }
+
+    /* Skills */
+    .bar { background: #1e293b; border-radius: 25px; overflow: hidden; margin-top: 6px; }
+    .bar-fill { height: 18px; border-radius: 25px; background: linear-gradient(90deg, #38bdf8, #2563eb); }
+
+    /* Projects */
+    .projects { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 25px; }
+    .project-card {
+      background: rgba(255,255,255,0.06); padding: 25px; border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4); transition: 0.3s;
+    }
+    .project-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(56,189,248,0.4); }
+
+    /* Achievements */
+    #achievements ul { list-style: none; }
+    #achievements li {
+      margin: 12px 0; padding: 12px; border-left: 4px solid #38bdf8;
+      background: rgba(255,255,255,0.05); border-radius: 6px;
+    }
+
+    /* Video Section */
+    .video-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+    iframe {
+      width: 100%;
+      max-width: 560px;
+      height: 315px;
+      border-radius: 12px;
+    }
+
+    /* Socials */
+    .socials { display: flex; justify-content: center; gap: 18px; margin-top: 25px; flex-wrap: wrap; }
+    .socials a {
+      width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; background: #1e293b; color: #38bdf8; font-size: 1.4rem;
+      transition: 0.3s; box-shadow: 0 0 8px rgba(56,189,248,0.4);
+    }
+    .socials a:hover { transform: scale(1.1); }
+
+    /* Individual hover colors */
+    .socials a.github:hover { background: #333; color: white; }
+    .socials a.linkedin:hover { background: #0a66c2; color: white; }
+    .socials a.youtube:hover { background: #ff0000; color: white; }
+    .socials a.twitter:hover { background: #000; color: white; }
+    .socials a.instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
+    .socials a.whatsapp:hover { background: #25d366; color: white; }
+    .socials a.facebook:hover { background: #1877f2; color: white; }
+
+    /* Contact */
+    form {
+      background: rgba(255,255,255,0.07); padding: 28px; border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4); max-width: 550px; margin: auto;
+    }
+    form input, form textarea {
+      width: 100%; padding: 12px; margin: 10px 0; border: none;
+      border-radius: 8px; background: #1e293b; color: white;
+    }
+    form button {
+      padding: 12px 25px; background: #38bdf8; color: #0f172a; border: none;
+      border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s;
+    }
+    form button:hover { background: #0ea5e9; color: white; }
+
+    /* Auth Modal */
+    .modal {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6); justify-content: center; align-items: center;
+    }
+    .modal-content {
+      background: #1e293b; padding: 30px; border-radius: 15px; width: 350px; text-align: center;
+      box-shadow: 0 4px 15px rgba(56,189,248,0.4);
+    }
+    .modal-content h3 { margin-bottom: 20px; color: #38bdf8; }
+    .modal-content input {
+      width: 100%; padding: 10px; margin: 10px 0; border-radius: 8px; border: none; background: #0f172a; color: white;
+    }
+    .modal-content button { padding: 10px 20px; border: none; border-radius: 8px; background: #38bdf8; color: #0f172a; font-weight: 600; cursor: pointer; }
+    .modal-content button:hover { background: #0ea5e9; color: white; }
+    .close { float: right; cursor: pointer; color: #ccc; font-size: 1.2rem; }
+
+    /* Footer */
+    footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 20px; margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.1); }
+  
+    .hero-socials {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 18px 0;
+}
+
+.hero-socials a {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+.hero-socials a:hover {
+  transform: scale(1.1);
+  background: #38bdf8;
+  color: #0f172a;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo"><b>My Portfolio</b></div>
+    <div>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#video">Video</a>
+      <a href="#contact">Contact</a>
+      <a href="#" onclick="document.getElementById('signin').style.display='flex'">Sign In</a>
+      <a href="#" onclick="document.getElementById('signup').style.display='flex'">Sign Up</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <img src="profile.jpg" alt="Profile Photo">
+    <h1>Kishorekumar S</h1>
+        <div class="hero-socials">
+      <a class="github" href="https://github.com/kishorekumarsamiyappan" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+      <a class="linkedin" href="https://www.linkedin.com/in/kishorekumarsamiyappan" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+      <a class="youtube" href="https://www.youtube.com/@TechSpark-Kishorekumar-S" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+      <a class="twitter" href="https://x.com/Kishore_63k" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i></a>
+      <a class="instagram" href="https://www.instagram.com/its_.me._kishorekumar" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>ECE Student | Embedded Systems | IoT Enthusiast | Web Developer</p>
+    <a href="#" class="btn">Download Resume</a>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hello! I am an aspiring Electronics & Communication Engineer with a deep interest in Embedded Systems, IoT, and Web Development. I enjoy working at the intersection of hardware and software, solving real-world problems, and building projects that matter.  
+    <br><br>My focus is on continuous learning, collaborating in teams, and applying my knowledge to impactful projects. I aim to contribute to innovative technology fields like Smart Devices, IoT, and AI-driven embedded systems.</p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <p>Embedded Systems</p><div class="bar"><div class="bar-fill" style="width:85%"></div></div>
+    <p>Python (Flask, IoT Integration)</p><div class="bar"><div class="bar-fill" style="width:80%"></div></div>
+    <p>C Programming (Microcontrollers)</p><div class="bar"><div class="bar-fill" style="width:75%"></div></div>
+    <p>Web Development (HTML, CSS, JavaScript)</p><div class="bar"><div class="bar-fill" style="width:85%"></div></div>
+    <p>MATLAB (Signal Processing, Simulations)</p><div class="bar"><div class="bar-fill" style="width:70%"></div></div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card"><h3>Temperature Controlled Fan</h3><p>8051 + ADC + PWM-based system that automatically adjusts fan speed based on ambient temperature.</p></div>
+      <div class="project-card"><h3>IoT Dashboard</h3><p>Flask + SQLite dashboard for real-time IoT monitoring and device control through a web interface.</p></div>
+      <div class="project-card"><h3>Voice-Music Separation</h3><p>MATLAB-based DSP project that separates vocals from background music using frequency-domain filtering.</p></div>
+    </div>
+  </section>
+
+  <!-- Sample Video -->
+  <section id="video">
+    <h2>Sample Demo Video</h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/RAjJRVFc1QM" title="YouTube video" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/sHulZH-gCbE" title="YouTube video" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/-FUN_R5iPaw" title="YouTube video" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/-Ic2I4N69OA" title="YouTube video" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/EaIqiHiU3b0" title="YouTube video" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section id="achievements">
+    <h2>Achievements</h2>
+    <ul>
+      <li>🏆 Completed Embedded Systems Projects using 8051 & PIC Microcontrollers</li>
+      <li>💡 Developed IoT Device Simulator with Python & Flask</li>
+      <li>🎵 MATLAB project on Audio Signal Processing (Voice-Music Separation)</li>
+      <li>🤝 Strong teamwork, leadership, and problem-solving skills</li>
+    </ul>
+  </section>
+
+  <!-- Social Media -->
+  <section>
+    <h2>Find Me On</h2>
+    <div class="socials">
+      <a class="github" href="https://github.com/kishorekumarsamiyappan" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+      <a class="linkedin" href="https://www.linkedin.com/in/kishorekumarsamiyappan" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+      <a class="youtube" href="https://www.youtube.com/@TechSpark-Kishorekumar-S" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+      <a class="twitter" href="https://x.com/Kishore_63k" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i></a>
+      <a class="instagram" href="https://www.instagram.com/its_.me._kishorekumar?igsh=MjcxejFvMmxid2U1" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+      <a class="facebook" href="https://www.facebook.com/profile.php?id=100047178186293" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+      <a class="whatsapp" href="https://whatsapp.com/channel/0029Vb6PMFFEAKWL7IXBsm46" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="text" placeholder="Subject">
+      <textarea rows="5" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer><p>&copy; 2025 Kishorekumar S | Made with ❤ in India</p></footer>
+
+  <!-- Sign In Modal -->
+  <div id="signin" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('signin').style.display='none'">&times;</span>
+      <h3>Sign In</h3>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button>Login</button>
+    </div>
+  </div>
+
+  <!-- Sign Up Modal -->
+  <div id="signup" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('signup').style.display='none'">&times;</span>
+      <h3>Sign Up</h3>
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button>Register</button>
+    </div>
+  </div>
+</body>
+</html>
