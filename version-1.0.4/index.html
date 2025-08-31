@@ -299,8 +299,8 @@
     </div>
   </div>
 
-  <!-- Sign Up Modal -->
- <!-- Sign Up Modal -->
+  
+<!-- Sign Up Modal -->
 <div id="signup" class="modal">
   <div class="modal-content">
     <span class="close" onclick="document.getElementById('signup').style.display='none'">&times;</span>
@@ -309,6 +309,8 @@
       <input type="text" id="fullname" placeholder="Full Name" required>
       <input type="email" id="email" placeholder="Email" required>
       <input type="password" id="password" placeholder="Password" required>
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+      <input type="text" id="phone" placeholder="Phone Number (Optional)">
       <button type="submit">Register</button>
     </form>
     <p id="errorMsg" style="color:#f87171; margin-top:10px;"></p>
@@ -320,6 +322,8 @@ function validateSignup() {
   let name = document.getElementById("fullname").value.trim();
   let email = document.getElementById("email").value.trim();
   let password = document.getElementById("password").value.trim();
+  let confirmPassword = document.getElementById("confirmPassword").value.trim();
+  let phone = document.getElementById("phone").value.trim();
   let errorMsg = document.getElementById("errorMsg");
 
   // Name validation
@@ -345,10 +349,30 @@ function validateSignup() {
     errorMsg.textContent = "Password must include at least one number.";
     return false;
   }
+  if (!/[A-Z]/.test(password)) {
+    errorMsg.textContent = "Password must include at least one uppercase letter.";
+    return false;
+  }
+  if (!/[!@#$%^&*]/.test(password)) {
+    errorMsg.textContent = "Password must include at least one special character (!@#$%^&*).";
+    return false;
+  }
 
-  errorMsg.textContent = ""; // Clear error if all checks pass
+  // Confirm password validation
+  if (password !== confirmPassword) {
+    errorMsg.textContent = "Passwords do not match.";
+    return false;
+  }
+
+  // Phone validation (optional, only if entered)
+  if (phone !== "" && !/^[0-9]{10}$/.test(phone)) {
+    errorMsg.textContent = "Phone number must be 10 digits.";
+    return false;
+  }
+
+  errorMsg.textContent = ""; // Clear errors if all checks pass
   alert("Registration Successful!");
-  return true; // allow form submit
+  return true; // allow form submission
 }
 </script>
 </body>
