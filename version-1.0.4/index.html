@@ -202,7 +202,7 @@
       <a class="github" href="https://github.com/kishorekumarsamiyappan" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
       <a class="linkedin" href="https://www.linkedin.com/in/kishorekumarsamiyappan" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
       <a class="youtube" href="https://www.youtube.com/@TechSpark-Kishorekumar-S" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-      <a class="twitter" href="https://x.com/Kishore_63k" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i></a>
+      <a class="twitter" href="https://x.com/Kishore_63k" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
       <a class="instagram" href="https://www.instagram.com/its_.me._kishorekumar" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
     </div>
     <p>ECE Student | Embedded Systems | IoT Enthusiast | Web Developer</p>
@@ -266,7 +266,7 @@
       <a class="github" href="https://github.com/kishorekumarsamiyappan" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
       <a class="linkedin" href="https://www.linkedin.com/in/kishorekumarsamiyappan" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
       <a class="youtube" href="https://www.youtube.com/@TechSpark-Kishorekumar-S" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-      <a class="twitter" href="https://x.com/Kishore_63k" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i></a>
+      <a class="twitter" href="https://x.com/Kishore_63k" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
       <a class="instagram" href="https://www.instagram.com/its_.me._kishorekumar?igsh=MjcxejFvMmxid2U1" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
       <a class="facebook" href="https://www.facebook.com/profile.php?id=100047178186293" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
       <a class="whatsapp" href="https://whatsapp.com/channel/0029Vb6PMFFEAKWL7IXBsm46" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
@@ -308,14 +308,28 @@
     <form id="signupForm" onsubmit="return validateSignup()">
       <input type="text" id="fullname" placeholder="Full Name" required>
       <input type="email" id="email" placeholder="Email" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
-      <input type="text" id="phone" placeholder="Phone Number (Optional)">
+
+      <!-- Password field with toggle -->
+      <div style="position:relative;">
+        <input type="password" id="password" placeholder="Password" required>
+        <i class="fa fa-eye" id="togglePassword" 
+           style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; color:#ccc;"></i>
+      </div>
+
+      <!-- Confirm Password field with toggle -->
+      <div style="position:relative; margin-top:10px;">
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+        <i class="fa fa-eye" id="toggleConfirmPassword" 
+           style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; color:#ccc;"></i>
+      </div>
+
+      <input type="tel" id="phone" placeholder="Phone Number (Optional)" pattern="[0-9]{10}" maxlength="10">
       <button type="submit">Register</button>
     </form>
     <p id="errorMsg" style="color:#f87171; margin-top:10px;"></p>
   </div>
 </div>
+
 
 <script>
 function validateSignup() {
@@ -353,10 +367,10 @@ function validateSignup() {
     errorMsg.textContent = "Password must include at least one uppercase letter.";
     return false;
   }
-  if (!/[!@#$%^&*]/.test(password)) {
-    errorMsg.textContent = "Password must include at least one special character (!@#$%^&*).";
-    return false;
-  }
+ if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+  errorMsg.textContent = "Password must include at least one special character.";
+  return false;
+}
 
   // Confirm password validation
   if (password !== confirmPassword) {
@@ -375,5 +389,22 @@ function validateSignup() {
   return true; // allow form submission
 }
 </script>
+<script>
+// Toggle password visibility
+document.getElementById("togglePassword").addEventListener("click", function() {
+  let passwordField = document.getElementById("password");
+  let type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+  passwordField.setAttribute("type", type);
+  this.classList.toggle("fa-eye-slash");
+});
+
+document.getElementById("toggleConfirmPassword").addEventListener("click", function() {
+  let confirmField = document.getElementById("confirmPassword");
+  let type = confirmField.getAttribute("type") === "password" ? "text" : "password";
+  confirmField.setAttribute("type", type);
+  this.classList.toggle("fa-eye-slash");
+});
+</script>
+
 </body>
 </html>
